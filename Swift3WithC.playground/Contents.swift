@@ -4,7 +4,7 @@ import Foundation
 
 var numbers = [11, 9, 1, 42, 13, 7, 0]
 
-func quickSort( input: inout [Int] ) -> [Int] {
+func quickSort( input: inout [Int] ) {
     // C-qsort
     qsort(&input, input.count, MemoryLayout<Int>.size) { (l, r) -> Int32 in
         
@@ -21,10 +21,17 @@ func quickSort( input: inout [Int] ) -> [Int] {
         }
         return 0
     }
-    
-    return input
 }
 
 print(numbers)
-print(quickSort(input: &numbers))
 
+quickSort(input: &numbers)
+print(numbers)
+
+// With Swift 3 array algorythms
+var ints = [17, 2, 5, 60, 41, 9]
+ints.sort() {
+    return $0 < $1
+}
+
+print(ints)
